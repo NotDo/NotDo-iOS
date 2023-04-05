@@ -6,5 +6,10 @@ let project = Project.makeModule(
     name: ModulePaths.Feature.RootFeature.rawValue,
     product: .staticLibrary,
     targets: [.interface],
-    internalDependencies: []
+    internalDependencies: [
+        .Feature.BaseFeature
+    ],
+    interfaceDependencies: [
+        .SPM.Moordinator
+    ]
 )
