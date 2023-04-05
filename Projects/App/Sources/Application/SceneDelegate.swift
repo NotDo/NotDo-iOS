@@ -1,16 +1,22 @@
 import UIKit
+import Moordinator
+import RootFeature
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private let moordinatorWorker = MoordinatorWorker()
 
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        guard let _ = (scene as? UIWindowScene) else { return }
-
+        guard let scene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: scene)
+        let rootMoordinator = AppDelegate.container.resolve(RootMoordinator.self, argument: window)!
+        moordinatorWorker.coordinate(moordinator: rootMoordinator)
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

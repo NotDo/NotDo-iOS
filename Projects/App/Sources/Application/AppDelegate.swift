@@ -1,12 +1,19 @@
 import UIKit
+import RootFeature
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    static let container = Container()
+    var assembler: Assembler!
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        assembler = Assembler([
+            RootAssembly()
+        ], container: AppDelegate.container)
         return true
     }
 
