@@ -3,12 +3,11 @@ import ProjectDescriptionHelpers
 import DependencyPlugin
 
 let project = Project.makeModule(
-    name: ModulePaths.Feature.RootFeature.rawValue,
+    name: ModulePaths.Feature.IntroFeature.rawValue,
     product: .staticLibrary,
-    targets: [.interface],
+    targets: [.interface, .unitTest],
     internalDependencies: [
-        .Feature.BaseFeature,
-        .Feature.IntroFeatureInterface
+        .Feature.BaseFeature
     ],
     interfaceDependencies: [
         .SPM.Moordinator
