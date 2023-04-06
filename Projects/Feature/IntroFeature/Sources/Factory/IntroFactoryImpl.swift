@@ -1,9 +1,16 @@
-//
-//  IntroFactoryImpl.swift
-//  IntroFeatureInterface
-//
-//  Created by sunghun on 2023/04/07.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import Moordinator
+import IntroFeatureInterface
 
-import Foundation
+struct IntroFactoryImpl: IntroFactory {
+    func makeMoordinator() -> Moordinator {
+        let introRouter = IntroRouter()
+        let introStore = IntroStore(
+            router: introRouter
+        )
+        let introViewController = IntroViewController(store: introStore)
+        return IntroMoordinator(
+            router: introRouter,
+            introViewController: introViewController
+        )
+    }
+}
