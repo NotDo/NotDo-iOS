@@ -1,9 +1,25 @@
-//
-//  IntroStore.swift
-//  IntroFeatureInterface
-//
-//  Created by sunghun on 2023/04/07.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import BaseFeature
+import Combine
+import DesignSystem
+import Moordinator
 
-import Foundation
+final class IntroStore: BaseStore, RouterProvidable {
+    let router: any Router
+    var bag: Set<AnyCancellable> = .init()
+
+    init(
+        router: any Router
+    ) {
+        self.router = router
+    }
+
+    struct State: Equatable {
+    }
+    enum Action: Equatable {
+    }
+
+    let stateSubject = CurrentValueSubject<State, Never>(State())
+
+    func process(_ action: Action) {
+    }
+}
