@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "4 button icon.svg",
+      "filename" : "Share.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "4 button icon 1.svg",
+      "filename" : "Share 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "4 button icon 2.svg",
+      "filename" : "Share 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

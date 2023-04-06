@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "설정 button icon.svg",
+      "filename" : "Setting.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "설정 button icon 1.svg",
+      "filename" : "Setting 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "설정 button icon 2.svg",
+      "filename" : "Setting 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

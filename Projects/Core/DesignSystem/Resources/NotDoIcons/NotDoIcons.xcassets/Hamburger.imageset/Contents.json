@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "카테고리.svg",
+      "filename" : "Hamburger.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "카테고리 1.svg",
+      "filename" : "Hamburger 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "카테고리 2.svg",
+      "filename" : "Hamburger 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
