@@ -37,7 +37,8 @@ let targets: [Target] = [
         resources: ["Resources/**"],
         scripts: scripts,
         dependencies: [
-            .Feature.RootFeature
+            .Feature.RootFeature,
+            .Feature.IntroFeature
         ],
         settings: .settings(base: env.baseSetting)
     )

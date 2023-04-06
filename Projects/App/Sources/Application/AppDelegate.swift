@@ -1,5 +1,6 @@
 import UIKit
 import RootFeature
+import IntroFeature
 import Swinject
 
 @main
@@ -12,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         assembler = Assembler([
-            RootAssembly()
+            RootAssembly(),
+            IntroAssembly()
         ], container: AppDelegate.container)
         return true
     }
