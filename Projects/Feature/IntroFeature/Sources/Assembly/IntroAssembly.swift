@@ -1,9 +1,11 @@
-//
-//  IntroAssembly.swift
-//  IntroFeatureInterface
-//
-//  Created by sunghun on 2023/04/07.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import Swinject
+import IntroFeatureInterface
 
-import Foundation
+public final class IntroAssembly: Assembly {
+    public init() { }
+    public func assemble(container: Container) {
+        container.register(IntroFactory.self) { _ in
+            IntroFactoryImpl()
+        }
+    }
+}
