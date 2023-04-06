@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "x2 button icon.svg",
+      "filename" : "Eye.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "x2 button icon 1.svg",
+      "filename" : "Eye 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "x2 button icon 2.svg",
+      "filename" : "Eye 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

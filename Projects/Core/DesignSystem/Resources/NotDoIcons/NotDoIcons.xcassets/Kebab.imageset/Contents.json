@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "케밥 icon.svg",
+      "filename" : "Kebab 1.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "케밥 icon 1.svg",
+      "filename" : "Kebab 2.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "케밥 icon 2.svg",
+      "filename" : "Kebab 3.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

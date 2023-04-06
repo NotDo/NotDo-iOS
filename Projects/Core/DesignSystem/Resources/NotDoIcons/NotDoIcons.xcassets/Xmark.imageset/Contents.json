@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "닫기 button icon.svg",
+      "filename" : "Xmark.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "닫기 button icon 1.svg",
+      "filename" : "Xmark 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "닫기 button icon 2.svg",
+      "filename" : "Xmark 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
