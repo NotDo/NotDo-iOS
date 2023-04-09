@@ -5,5 +5,4 @@ import BaseFeature
 import DesignSystem
 
 final class IntroViewController: BaseViewController<IntroStore> {
-
 }
