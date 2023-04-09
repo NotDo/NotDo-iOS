@@ -11,6 +11,8 @@ public final class NotDoTextField: UITextField {
 
     public var isSecure: Bool = false
 
+    public var isError: Bool = false
+
     private lazy var secureButton: UIButton = {
         var secureButton = UIButton()
         secureButton.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +42,9 @@ public final class NotDoTextField: UITextField {
         let didBecomeFirstResponder = super.becomeFirstResponder()
         if didBecomeFirstResponder {
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor.notDo(.main(.black)).cgColor
+            self.layer.borderColor = isError
+            ? UIColor.notDo(.system(.error)).cgColor
+            : UIColor.notDo(.main(.black)).cgColor
         }
         return didBecomeFirstResponder
     }
@@ -142,21 +146,33 @@ public final class NotDoTextView: UIView {
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.alpha = 0.5
+        label.font = .notDo(.caption2Medium)
+        label.textColor = .notDo(.main(.black))
         return label
     }()
 
     private let textField: NotDoTextField = {
-        let textLabel = NotDoTextField()
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        return textLabel
+        let textField = NotDoTextField()
+
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
 
-    public init(placeholder: String? = "", text: String? = "", secure: Bool? = false) {
+    private lazy var errorTextLabel: UILabel = {
+        let labael = UILabel()
+        labael.translatesAutoresizingMaskIntoConstraints = false
+        labael.text = "asdfassafs"
+        labael.font = .notDo(.caption2Medium)
+        labael.textColor = .notDo(.system(.error))
+        return labael
+    }()
+
+    public init(placeholder: String? = "", text: String? = "", isSecure: Bool? = false, isError: Bool? = false) {
         super.init(frame: .zero)
         self.textField.placeholder = placeholder
         self.textLabel.text = text
-        self.textField.isSecure = secure ?? false
+        self.textField.isSecure = isSecure ?? false
+        self.textField.isError = isError ?? false
         configureViews()
     }
 
@@ -167,11 +183,14 @@ public final class NotDoTextView: UIView {
     func configureViews() {
         addSubview(textField)
         addSubview(textLabel)
+        addSubview(errorTextLabel)
 
         NSLayoutConstraint.activate([
             self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight),
-            textLabel.topAnchor.constraint(equalTo: textField.topAnchor, constant: -24),
+            textLabel.topAnchor.constraint(equalTo: textField.topAnchor, constant: -28),
             textLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 5),
+            errorTextLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 12),
+            errorTextLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 5),
             textField.heightAnchor.constraint(
                 equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight
             ),
