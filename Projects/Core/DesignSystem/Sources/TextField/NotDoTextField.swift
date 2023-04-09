@@ -113,15 +113,12 @@ private extension NotDoTextField {
         self.clearButtonMode = .whileEditing
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
-
-        self.heightAnchor.constraint(
-            equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight
-        ).isActive = true
         self.addSubview(secureButton)
-        self.secureButton.trailingAnchor.constraint(
-            equalTo: self.trailingAnchor, constant: -48
-        ).isActive = true
-        self.secureButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight),
+            self.secureButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -48),
+            self.secureButton.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
         self.isEnabled = true
         self.textColor = .notDo(.main(.black))
         self.layer.borderWidth = 1
