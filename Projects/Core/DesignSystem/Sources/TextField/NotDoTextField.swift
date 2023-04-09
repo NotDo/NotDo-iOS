@@ -4,8 +4,26 @@ public final class NotDoTextField: UITextField {
     public override var placeholder: String? {
         didSet { setNeedsDisplay() }
     }
+
     private var cleanrButtonWidth: CGFloat {
         clearButtonRect(forBounds: bounds).width
+    }
+
+    public var isSecure: Bool = false
+
+    private lazy var secureButton: UIButton = {
+        var secureButton = UIButton()
+        secureButton.translatesAutoresizingMaskIntoConstraints = false
+        secureButton.addTarget(self, action: #selector(secureButtonDidTap(_:)), for: .touchUpInside)
+        secureButton.tintColor = .notDo(.gray(.gray300))
+        secureButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        secureButton.setImage(UIImage.eye, for: .normal)
+        return secureButton
+    }()
+
+    @objc func secureButtonDidTap(_ sender: UIButton) {
+        secureButton.setImage(isSecureTextEntry ? UIImage.eyeSlash : UIImage.eye, for: .normal)
+        isSecureTextEntry.toggle()
     }
 
     public init(placeholder: String? = "") {
@@ -22,7 +40,7 @@ public final class NotDoTextField: UITextField {
         let didBecomeFirstResponder = super.becomeFirstResponder()
         if didBecomeFirstResponder {
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor.notDo(.gray(.gray400)).cgColor
+            self.layer.borderColor = UIColor.notDo(.main(.black)).cgColor
         }
         return didBecomeFirstResponder
     }
@@ -31,7 +49,7 @@ public final class NotDoTextField: UITextField {
         let didResignFirstResponder = super.resignFirstResponder()
         if didResignFirstResponder {
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor.notDo(.main(.black)).cgColor
+            self.layer.borderColor = UIColor.notDo(.gray(.gray400)).cgColor
         }
         return didResignFirstResponder
     }
@@ -62,6 +80,7 @@ public final class NotDoTextField: UITextField {
                 bottom: 0,
                 right: (
                     NotDoTextFieldProperty.Dimension.rightMargin
+                    + (isSecure ? 24 : 0)
                     + self.cleanrButtonWidth
                     + NotDoTextFieldProperty.Dimension.subviewSpacing
                 )
@@ -70,6 +89,7 @@ public final class NotDoTextField: UITextField {
     }
 
     public override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        self.secureButton.isHidden = !isSecure || !isEditing || text?.isEmpty ?? false
         return bounds.inset(
             by: UIEdgeInsets(
                 top: 0,
@@ -77,6 +97,7 @@ public final class NotDoTextField: UITextField {
                 bottom: 0,
                 right: (
                     NotDoTextFieldProperty.Dimension.rightMargin
+                    + (isSecure ? 24 : 0)
                     + self.cleanrButtonWidth
                     + NotDoTextFieldProperty.Dimension.subviewSpacing
                 )
@@ -89,18 +110,22 @@ private extension NotDoTextField {
     func setupTextField() {
         self.backgroundColor = .notDo(.main(.white))
         self.font = .notDo(.bodyRegular)
-        self.tintColor = .notDo(.main(.black))
         self.clearButtonMode = .whileEditing
         self.clipsToBounds = true
-        self.layer.cornerRadius = 8
+        self.layer.cornerRadius = 10
 
         self.heightAnchor.constraint(
-            equalToConstant: NotDoTextFieldProperty.Dimension.textFieldHeight
+            equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight
         ).isActive = true
+        self.addSubview(secureButton)
+        self.secureButton.trailingAnchor.constraint(
+            equalTo: self.trailingAnchor, constant: -48
+        ).isActive = true
+        self.secureButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.isEnabled = true
         self.textColor = .notDo(.main(.black))
         self.layer.borderWidth = 1
-        self.layer.borderColor = nil
+        self.layer.borderColor = UIColor.notDo(.gray(.gray400)).cgColor
     }
 
     func setPlaceholderTextColor() {
@@ -113,5 +138,47 @@ private extension NotDoTextField {
                 .foregroundColor: placeholderTextColor
             ]
         )
+    }
+}
+
+public final class NotDoTextView: UIView {
+    private lazy var textLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.alpha = 0.5
+        return label
+    }()
+
+    private let textField: NotDoTextField = {
+        let textLabel = NotDoTextField()
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        return textLabel
+    }()
+
+    public init(placeholder: String? = "", text: String? = "", secure: Bool? = false) {
+        super.init(frame: .zero)
+        self.textField.placeholder = placeholder
+        self.textLabel.text = text
+        self.textField.isSecure = secure ?? false
+        configureViews()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configureViews() {
+        addSubview(textField)
+        addSubview(textLabel)
+
+        NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight),
+            textLabel.topAnchor.constraint(equalTo: textField.topAnchor, constant: -24),
+            textLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 5),
+            textField.heightAnchor.constraint(
+                equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight
+            ),
+            textField.widthAnchor.constraint(equalTo: widthAnchor)
+        ])
     }
 }
