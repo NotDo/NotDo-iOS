@@ -53,7 +53,9 @@ public final class NotDoTextField: UITextField {
         let didResignFirstResponder = super.resignFirstResponder()
         if didResignFirstResponder {
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor.notDo(.gray(.gray400)).cgColor
+            self.layer.borderColor = isError
+            ? UIColor.notDo(.system(.error)).cgColor
+            : UIColor.notDo(.gray(.gray400)).cgColor
         }
         return didResignFirstResponder
     }
@@ -63,8 +65,6 @@ public final class NotDoTextField: UITextField {
         setPlaceholderTextColor()
     }
 
-    ///  clearButton의 Bound에 관한 함수
-    ///  clearButton 우측 마진을 주기 위해 사용
     public override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.clearButtonRect(forBounds: bounds)
         return rect.offsetBy(
@@ -119,14 +119,16 @@ private extension NotDoTextField {
         self.layer.cornerRadius = 10
         self.addSubview(secureButton)
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight),
+            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldHeight),
             self.secureButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -48),
             self.secureButton.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
         self.isEnabled = true
         self.textColor = .notDo(.main(.black))
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.notDo(.gray(.gray400)).cgColor
+        self.layer.borderColor = isError
+        ? UIColor.notDo(.system(.error)).cgColor
+        : UIColor.notDo(.gray(.gray400)).cgColor
     }
 
     func setPlaceholderTextColor() {
@@ -153,26 +155,32 @@ public final class NotDoTextView: UIView {
 
     private let textField: NotDoTextField = {
         let textField = NotDoTextField()
-
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private lazy var errorTextLabel: UILabel = {
-        let labael = UILabel()
-        labael.translatesAutoresizingMaskIntoConstraints = false
-        labael.text = "asdfassafs"
-        labael.font = .notDo(.caption2Medium)
-        labael.textColor = .notDo(.system(.error))
-        return labael
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .notDo(.caption2Medium)
+        label.textColor = .notDo(.system(.error))
+        return label
     }()
 
-    public init(placeholder: String? = "", text: String? = "", isSecure: Bool? = false, isError: Bool? = false) {
+    public init(
+        placeholder: String? = "",
+        text: String? = "",
+        isSecure: Bool? = false,
+        isError: Bool? = false,
+        errorText: String? = ""
+    ) {
         super.init(frame: .zero)
         self.textField.placeholder = placeholder
         self.textLabel.text = text
         self.textField.isSecure = isSecure ?? false
         self.textField.isError = isError ?? false
+        self.errorTextLabel.isHidden = !(isError ?? false)
+        self.errorTextLabel.text = errorText
         configureViews()
     }
 
@@ -186,13 +194,13 @@ public final class NotDoTextView: UIView {
         addSubview(errorTextLabel)
 
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight),
+            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldHeight),
             textLabel.topAnchor.constraint(equalTo: textField.topAnchor, constant: -28),
             textLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 5),
             errorTextLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 12),
             errorTextLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 5),
             textField.heightAnchor.constraint(
-                equalToConstant: NotDoTextFieldProperty.Dimension.textFieldInsideHeight
+                equalToConstant: NotDoTextFieldProperty.Dimension.textFieldHeight
             ),
             textField.widthAnchor.constraint(equalTo: widthAnchor)
         ])
