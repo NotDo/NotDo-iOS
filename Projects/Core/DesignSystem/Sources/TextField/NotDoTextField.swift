@@ -23,11 +23,6 @@ public final class NotDoTextField: UITextField {
         return secureButton
     }()
 
-    @objc func secureButtonDidTap(_ sender: UIButton) {
-        secureButton.setImage(isSecureTextEntry ? UIImage.eyeSlash : UIImage.eye, for: .normal)
-        isSecureTextEntry.toggle()
-    }
-
     public init(placeholder: String? = "") {
         super.init(frame: .zero)
         self.placeholder = placeholder
@@ -141,6 +136,11 @@ private extension NotDoTextField {
                 .foregroundColor: placeholderTextColor
             ]
         )
+    }
+
+    @objc func secureButtonDidTap(_ sender: UIButton) {
+        secureButton.setImage(isSecureTextEntry ? UIImage.eyeSlash : UIImage.eye, for: .normal)
+        isSecureTextEntry.toggle()
     }
 }
 
