@@ -8,7 +8,6 @@ final class IntroViewController: BaseViewController<IntroStore> {
     private let notDoImage = UIImageView().then {
         $0.image = .notDoImage
     }
-
     private let titleLabel = UILabel().then {
         $0.numberOfLines = 2
         $0.textAlignment = .center
