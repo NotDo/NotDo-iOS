@@ -20,4 +20,5 @@ public extension UIImage {
     static let xmarkFill = DesignSystemAsset.NotDoIcons.xmarkFill.image
     static let checkBox = DesignSystemAsset.NotDoIcons.checkBox.image
     static let notDoImage = DesignSystemAsset.NotDoIcons.notDoImage.image
+    static let chevronRight = DesignSystemAsset.NotDoIcons.chevronRight.image
 }

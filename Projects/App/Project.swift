@@ -38,7 +38,8 @@ let targets: [Target] = [
         scripts: scripts,
         dependencies: [
             .Feature.RootFeature,
-            .Feature.IntroFeature
+            .Feature.IntroFeature,
+            .Feature.SignInFeature
         ],
         settings: .settings(base: env.baseSetting)
     )

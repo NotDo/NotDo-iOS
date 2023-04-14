@@ -3,12 +3,11 @@ import ProjectDescriptionHelpers
 import DependencyPlugin
 
 let project = Project.makeModule(
-    name: ModulePaths.Feature.IntroFeature.rawValue,
+    name: ModulePaths.Feature.SignInFeature.rawValue,
     product: .staticLibrary,
     targets: [.interface, .unitTest],
     internalDependencies: [
-        .Feature.BaseFeature,
-        .Feature.SignInFeature
+        .Feature.BaseFeature
     ],
     interfaceDependencies: [
         .SPM.Moordinator
