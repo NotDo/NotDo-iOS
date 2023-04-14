@@ -1,9 +1,16 @@
-//
-//  SignInFactoryImpl.swift
-//  SignInFeatureInterface
-//
-//  Created by sunghun on 2023/04/14.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import Moordinator
+import SignInFeatureInterface
 
-import Foundation
+struct SignInFactoryImpl: SignInFactory {
+    func makeMoordinator() -> Moordinator {
+        let signInRouter = SignInRouter()
+        let signInStore = SignInStore(
+            router: signInRouter
+        )
+        let signInViewController = SignInViewController(store: signInStore)
+        return SignInMoordinator(
+            router: signInRouter,
+            signInViewController: signInViewController
+        )
+    }
+}
