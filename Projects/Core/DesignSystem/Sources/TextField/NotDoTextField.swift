@@ -79,7 +79,7 @@ public final class NotDoTextField: UITextField {
                 bottom: 0,
                 right: (
                     NotDoTextFieldProperty.Dimension.rightMargin
-                    + (isSecure ? 24 : 0)
+                    + (isSecure ? 36 : 0)
                     + self.cleanrButtonWidth
                     + NotDoTextFieldProperty.Dimension.subviewSpacing
                 )
@@ -96,7 +96,7 @@ public final class NotDoTextField: UITextField {
                 bottom: 0,
                 right: (
                     NotDoTextFieldProperty.Dimension.rightMargin
-                    + (isSecure ? 24 : 0)
+                    + (isSecure ? 36 : 0)
                     + self.cleanrButtonWidth
                     + NotDoTextFieldProperty.Dimension.subviewSpacing
                 )
