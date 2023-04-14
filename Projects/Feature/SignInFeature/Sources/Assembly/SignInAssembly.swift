@@ -1,9 +1,11 @@
-//
-//  SignInAssembly.swift
-//  SignInFeatureInterface
-//
-//  Created by sunghun on 2023/04/14.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import Swinject
+import SignInFeatureInterface
 
-import Foundation
+public final class SignInAssembly: Assembly {
+    public init() { }
+    public func assemble(container: Container) {
+        container.register(SignInFactory.self) { _ in
+            SignInFactoryImpl()
+        }
+    }
+}
