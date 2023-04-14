@@ -1,8 +1,6 @@
 import UIKit
 import DesignSystem
 import BaseFeature
-import SnapKit
-import Then
 
 final class SignInViewController: BaseViewController<SignInStore> {
     private let notDoImage = NotDoIconView(size: .custom(CGSize(width: 64, height: 18))).then {
