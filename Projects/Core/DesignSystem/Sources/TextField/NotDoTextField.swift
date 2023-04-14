@@ -194,7 +194,7 @@ public final class NotDoTextView: UIView {
         addSubview(errorTextLabel)
 
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textFieldHeight),
+            self.heightAnchor.constraint(equalToConstant: NotDoTextFieldProperty.Dimension.textViewHeight),
             textLabel.topAnchor.constraint(equalTo: textField.topAnchor, constant: -28),
             textLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 5),
             errorTextLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 12),
