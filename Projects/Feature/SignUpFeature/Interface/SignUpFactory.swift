@@ -2,5 +2,5 @@ import Moordinator
 import UIKit
 
 public protocol SignUpFactory {
-    func makeMoordinator() -> Moordinator
+    func makeViewController(router: any Router) -> UIViewController
 }
