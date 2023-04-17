@@ -1,6 +1,9 @@
-import UIKit
 import BaseFeature
 import DesignSystem
+import CombineUtility
+import GlobalThirdPartyLibrary
+import Combine
+import UIKit
 
 final class IntroViewController: BaseViewController<IntroStore> {
     private let notDoImage = UIImageView().then {
@@ -47,5 +50,13 @@ final class IntroViewController: BaseViewController<IntroStore> {
             $0.top.equalTo(signInButton.snp.bottom).offset(32)
             $0.centerX.equalToSuperview()
         }
+    }
+
+    override func bindAction() {
+        signUpButton.tapPublisher
+            .sink(with: store, receiveValue: { store, _ in
+                store.process(.signUpButtonDidTap)
+            })
+            .store(in: &bag)
     }
 }
