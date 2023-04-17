@@ -24,7 +24,7 @@ final class SignInMoordinator: Moordinator {
         guard let path = path as? SignInRoutePath else { return .none }
         switch path {
         case .signIn:
-            rootVC.setViewControllers([signInViewController], animated: true)
+            rootVC.pushViewController(signInViewController, animated: true)
         default:
             return .none
         }
