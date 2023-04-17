@@ -1,9 +1,7 @@
-//
-//  SignUpViewController.swift
-//  SignUpFeatureInterface
-//
-//  Created by sunghun on 2023/04/18.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import UIKit
+import DesignSystem
+import BaseFeature
+import SignUpFeatureInterface
 
-import Foundation
+final class SignUpViewController: BaseViewController<SignUpStore> {
+}
