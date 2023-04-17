@@ -1,16 +1,14 @@
 import Moordinator
+import UIKit
 import SignUpFeatureInterface
 
 struct SignUpFactoryImpl: SignUpFactory {
-    func makeMoordinator() -> Moordinator {
+    func makeViewController(router: Router) -> UIViewController {
         let signUpRouter = SignUpRouter()
         let signUpStore = SignUpStore(
             router: signUpRouter
         )
         let signUpViewController = SignUpViewController(store: signUpStore)
-        return SignUpMoordinator(
-            router: signUpRouter,
-            signUpViewController: signUpViewController
-        )
+        return signUpViewController
     }
 }
