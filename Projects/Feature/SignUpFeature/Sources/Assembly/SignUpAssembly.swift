@@ -1,9 +1,11 @@
-//
-//  SignUpAssembly.swift
-//  SignUpFeatureInterface
-//
-//  Created by sunghun on 2023/04/18.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import Swinject
+import SignUpFeatureInterface
 
-import Foundation
+public final class SignUpAssembly: Assembly {
+    public init() { }
+    public func assemble(container: Container) {
+        container.register(SignUpFactory.self) { _ in
+            SignUpFactoryImpl()
+        }
+    }
+}
