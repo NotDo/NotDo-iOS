@@ -1,9 +1,10 @@
-//
-//  UIButton+tapPublisher.swift
-//  CombineUtility
-//
-//  Created by sunghun on 2023/04/18.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import Combine
+import UIKit
 
-import Foundation
+public extension UIButton {
+    var tapPublisher: AnyPublisher<Void, Never> {
+        controlPublisher(for: .touchUpInside)
+            .map { _ in }
+            .eraseToAnyPublisher()
+    }
+}
