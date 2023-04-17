@@ -1,9 +1,10 @@
-//
-//  SignUpRouter.swift
-//  SignUpFeatureInterface
-//
-//  Created by sunghun on 2023/04/18.
-//  Copyright © 2023 NotDo. All rights reserved.
-//
+import Combine
+import Moordinator
+import SignUpFeatureInterface
 
-import Foundation
+final class SignUpRouter: Router {
+    let route: PassthroughSubject<any RoutePath, Never> = .init()
+    var initialPath: RoutePath {
+        SignUpRoutePath.signUp
+    }
+}
