@@ -39,7 +39,8 @@ let targets: [Target] = [
         dependencies: [
             .Feature.RootFeature,
             .Feature.IntroFeature,
-            .Feature.SignInFeature
+            .Feature.SignInFeature,
+            .Feature.SignUpFeature
         ],
         settings: .settings(base: env.baseSetting)
     )

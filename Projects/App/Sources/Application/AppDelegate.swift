@@ -2,6 +2,7 @@ import UIKit
 import RootFeature
 import IntroFeature
 import SignInFeature
+import SignUpFeature
 import Swinject
 
 @main
@@ -16,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         assembler = Assembler([
             RootAssembly(),
             IntroAssembly(),
-            SignInAssembly()
+            SignInAssembly(),
+            SignUpAssembly()
         ], container: AppDelegate.container)
         return true
     }
