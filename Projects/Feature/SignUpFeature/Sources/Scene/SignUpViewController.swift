@@ -26,7 +26,7 @@ final class SignUpViewController: BaseViewController<SignUpStore> {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.notDo(.gray(.gray400)).cgColor
         $0.layer.cornerRadius = 7
-        $0.setImage(.bigCheckBox, for: .normal)
+        $0.setImage(.checkBox, for: .normal)
         $0.imageView?.layer.transform = CATransform3DMakeScale(1.36, 1.36, 1.36)
     }
 
