@@ -9,9 +9,9 @@ public final class NotDoCheckBox: UIView {
         return button
     }()
 
-    public var isCheck = false
+    private var isCheck = false
 
-    public var darkMode = false
+    private var darkMode = false
 
     public init(isCheck: Bool? = false, darkMode: Bool? = false) {
         super.init(frame: .zero)
