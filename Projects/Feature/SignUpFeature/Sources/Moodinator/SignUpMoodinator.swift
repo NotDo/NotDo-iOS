@@ -25,6 +25,8 @@ final class SignUpMoordinator: Moordinator {
         switch path {
         case .signUp:
             rootVC.pushViewController(signUpViewController, animated: true)
+//        case .findPassword:
+//            rootVC.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
         default:
             return .none
         }

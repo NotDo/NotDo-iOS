@@ -9,6 +9,18 @@ public extension TargetDependency {
 }
 
 public extension TargetDependency.Feature {
+    static let FindPasswordFeatureTesting = TargetDependency.project(
+        target: ModulePaths.Feature.FindPasswordFeature.targetName(type: .testing),
+        path: .relativeToFeature(ModulePaths.Feature.FindPasswordFeature.rawValue)
+    )
+    static let FindPasswordFeatureInterface = TargetDependency.project(
+        target: ModulePaths.Feature.FindPasswordFeature.targetName(type: .interface),
+        path: .relativeToFeature(ModulePaths.Feature.FindPasswordFeature.rawValue)
+    )
+    static let FindPasswordFeature = TargetDependency.project(
+        target: ModulePaths.Feature.FindPasswordFeature.targetName(type: .sources),
+        path: .relativeToFeature(ModulePaths.Feature.FindPasswordFeature.rawValue)
+    )
     static let SignUpFeatureTesting = TargetDependency.project(
         target: ModulePaths.Feature.SignUpFeature.targetName(type: .testing),
         path: .relativeToFeature(ModulePaths.Feature.SignUpFeature.rawValue)
