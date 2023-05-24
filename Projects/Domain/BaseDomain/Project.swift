@@ -11,7 +11,8 @@ let project = Project.makeModule(
     ],
     internalDependencies: [
         .Shared.GlobalThirdPartyLibrary,
-        .Shared.UtilityModule
+        .Shared.UtilityModule,
+        .Domain.AuthDomain
     ],
     additionalPlistRows: [
         "BASE_URL": .string("$(BASE_URL)")

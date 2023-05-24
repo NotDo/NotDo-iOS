@@ -23,6 +23,7 @@ public extension ModulePaths {
 
 public extension ModulePaths {
     enum Domain: String {
+        case AuthDomain
         case BaseDomain
 
         func targetName(type: MicroTargetType) -> String {
