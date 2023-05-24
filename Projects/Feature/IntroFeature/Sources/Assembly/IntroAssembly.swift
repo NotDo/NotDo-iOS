@@ -1,6 +1,5 @@
 import Swinject
-import IntroFeatureInterface
-import SignUpFeatureInterface
+import SignUpFeature
 
 public final class IntroAssembly: Assembly {
     public init() { }

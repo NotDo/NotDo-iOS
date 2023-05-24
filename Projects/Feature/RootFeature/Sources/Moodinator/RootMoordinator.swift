@@ -1,8 +1,8 @@
 import Combine
 import Moordinator
 import UIKit
-import RootFeatureInterface
-import IntroFeatureInterface
+import IntroFeature
+import BaseFeature
 
 public final class RootMoordinator: Moordinator {
     private let window: UIWindow
@@ -29,9 +29,11 @@ public final class RootMoordinator: Moordinator {
     }
 
     public func route(to path: RoutePath) -> MoordinatorContributors {
-        guard let path = path as? RootRoutePath else { return .none }
+        print("1112")
+        guard let path = path.asNotDo else { print(path); return .none }
         switch path {
-        case .auth:
+        case .splash:
+            print("111")
             let introMoodinator = introFactory.makeMoordinator()
             Moord.use(introMoodinator) { root in
                 self.window.rootViewController = root
@@ -43,9 +45,10 @@ public final class RootMoordinator: Moordinator {
                     completion: nil
                 )
             }
-            return .one(.contribute(introMoodinator))
+            return .one(.contribute(withNextPresentable: introMoodinator, withNextRouter: DisposableRouter(singlePath: NotDoRoutePath.splash)))
 
-        case .main:
+        default:
+            print("asdf")
             return .none
         }
     }

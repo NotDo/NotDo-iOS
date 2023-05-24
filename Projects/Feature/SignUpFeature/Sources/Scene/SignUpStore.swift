@@ -2,17 +2,10 @@ import BaseFeature
 import Combine
 import DesignSystem
 import Moordinator
-import SignUpFeatureInterface
 
-final class SignUpStore: BaseStore, RouterProvidable {
-    let router: any Router
+final class SignUpStore: BaseStore {
+    let route: PassthroughSubject<RoutePath, Never> = .init()
     var bag: Set<AnyCancellable> = .init()
-
-    init(
-        router: any Router
-    ) {
-        self.router = router
-    }
 
     struct State: Equatable {
         var isCheck: Bool = false
@@ -32,7 +25,7 @@ final class SignUpStore: BaseStore, RouterProvidable {
         case .checkButtonDidTap:
             newState.isCheck.toggle()
         case .seeMoreButtonDidTap:
-            router.route.send(SignUpRoutePath.findPassword)
+            route.send(NotDoRoutePath.renewalPassword)
         }
 
         stateSubject.send(newState)

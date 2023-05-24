@@ -1,19 +1,16 @@
 import DesignSystem
+import BaseFeature
 import Moordinator
 import UIKit
-import SignInFeatureInterface
 
 final class SignInMoordinator: Moordinator {
     private let rootVC = UINavigationController()
-    let router: any Router
     private let signInViewController: SignInViewController
 
     init(
-        router: SignInRouter,
         signInViewController: SignInViewController
     ) {
-        self.router = router
-        self.signInViewController = signInViewController
+         self.signInViewController = signInViewController
     }
 
     var root: Presentable {
@@ -21,9 +18,9 @@ final class SignInMoordinator: Moordinator {
     }
 
     func route(to path: RoutePath) -> MoordinatorContributors {
-        guard let path = path as? SignInRoutePath else { return .none }
+        guard let path = path as? NotDoRoutePath else { return .none }
         switch path {
-        case .signIn:
+        case .signin:
             rootVC.pushViewController(signInViewController, animated: true)
         default:
             return .none

@@ -3,7 +3,6 @@ import DesignSystem
 import BaseFeature
 import GlobalThirdPartyLibrary
 import CombineUtility
-import SignUpFeatureInterface
 
 final class SignUpViewController: BaseViewController<SignUpStore> {
     private let notDoImage = NotDoIconView(size: .custom(CGSize(width: 64, height: 18))).then {

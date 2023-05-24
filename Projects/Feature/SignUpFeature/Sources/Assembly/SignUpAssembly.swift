@@ -1,5 +1,4 @@
 import Swinject
-import SignUpFeatureInterface
 
 public final class SignUpAssembly: Assembly {
     public init() { }

@@ -3,15 +3,10 @@ import Combine
 import DesignSystem
 import Moordinator
 
-final class SignInStore: BaseStore, RouterProvidable {
-    let router: any Router
-    var bag: Set<AnyCancellable> = .init()
+final class SignInStore: BaseStore {
+    var route: PassthroughSubject<RoutePath, Never> = .init()
 
-    init(
-        router: any Router
-    ) {
-        self.router = router
-    }
+    var bag: Set<AnyCancellable> = .init()
 
     struct State: Equatable {
     }

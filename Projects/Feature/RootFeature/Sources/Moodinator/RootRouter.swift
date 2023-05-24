@@ -1,10 +1,11 @@
 import Combine
+import BaseFeature
 import Moordinator
-import RootFeatureInterface
 
-final class RootRouter: Router {
-    let route: PassthroughSubject<any RoutePath, Never> = .init()
-    var initialPath: RoutePath {
-        RootRoutePath.auth
+public final class RootRouter: Router {
+    public init() {}
+    public let route: PassthroughSubject<any RoutePath, Never> = .init()
+    public var initialPath: RoutePath {
+        NotDoRoutePath.splash
     }
 }

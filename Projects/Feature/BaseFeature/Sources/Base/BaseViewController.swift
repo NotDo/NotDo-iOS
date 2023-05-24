@@ -4,7 +4,7 @@ import UIKit
 import SnapKit
 import Then
 
-open class BaseViewController<Store: BaseStore>: UIViewController, BoundsProviable {
+open class BaseViewController<Store: BaseStore>: UIViewController, HasCancellableBag, ViewControllable {
 
     // MARK: - Properties
 

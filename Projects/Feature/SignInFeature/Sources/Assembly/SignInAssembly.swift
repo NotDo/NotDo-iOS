@@ -1,5 +1,4 @@
 import Swinject
-import SignInFeatureInterface
 
 public final class SignInAssembly: Assembly {
     public init() { }

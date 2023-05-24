@@ -1,21 +1,18 @@
 import DesignSystem
 import Moordinator
 import UIKit
-import IntroFeatureInterface
-import SignUpFeatureInterface
+import SignUpFeature
+import BaseFeature
 
 final class IntroMoordinator: Moordinator {
     private let rootVC = UINavigationController()
-    let router: any Router
     private let introViewController: IntroViewController
     private let signUpFactory: SignUpFactory
 
     init(
-        router: IntroRouter,
         introViewController: IntroViewController,
         signUpFactory: SignUpFactory
     ) {
-        self.router = router
         self.introViewController = introViewController
         self.signUpFactory = signUpFactory
     }
@@ -25,14 +22,14 @@ final class IntroMoordinator: Moordinator {
     }
 
     func route(to path: RoutePath) -> MoordinatorContributors {
-        guard let path = path as? IntroRoutePath else { return .none }
+        guard let path = path as? NotDoRoutePath else { return .none }
         switch path {
-        case .intro:
+        case .splash:
             rootVC.setViewControllers([introViewController], animated: true)
-        case .signUp:
-            let viewController = signUpFactory.makeViewController(router: router)
+        case .signup:
+            let viewController = signUpFactory.makeViewController()
             rootVC.pushViewController(viewController, animated: true)
-            return .one(.contribute(viewController))
+            return .one(.contribute(withNextPresentable: viewController))
         default:
             return .none
         }

@@ -1,6 +1,6 @@
-import RootFeatureInterface
-import IntroFeatureInterface
 import Swinject
+import BaseFeature
+import IntroFeature
 
 public final class RootAssembly: Assembly {
     public init() { }

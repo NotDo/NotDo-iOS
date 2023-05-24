@@ -9,7 +9,7 @@ let dependencies = Dependencies(
             .remote(url: "https://github.com/Swinject/Swinject.git", requirement: .exact("2.8.3")),
             .remote(url: "https://github.com/SnapKit/SnapKit", requirement: .exact("5.6.0")),
             .remote(url: "https://github.com/devxoul/Then", requirement: .exact("3.0.0")),
-            .remote(url: "https://github.com/GSM-MSG/Moordinator.git", requirement: .exact("1.1.1"))
+            .remote(url: "https://github.com/GSM-MSG/Moordinator.git", requirement: .exact("2.0.0"))
         ],
         productTypes: [
             "Moordinator": .framework,

@@ -2,17 +2,10 @@ import BaseFeature
 import Combine
 import DesignSystem
 import Moordinator
-import IntroFeatureInterface
 
-final class IntroStore: BaseStore, RouterProvidable {
-    let router: any Router
+final class IntroStore: BaseStore {
+    let route: PassthroughSubject<RoutePath, Never> = .init()
     var bag: Set<AnyCancellable> = .init()
-
-    init(
-        router: any Router
-    ) {
-        self.router = router
-    }
 
     struct State: Equatable {
     }
@@ -28,7 +21,7 @@ final class IntroStore: BaseStore, RouterProvidable {
 
         switch action {
         case .signUpButtonDidTap:
-            router.route.send(IntroRoutePath.signUp)
+            route.send(NotDoRoutePath.signup)
         }
         stateSubject.send(newState)
     }
