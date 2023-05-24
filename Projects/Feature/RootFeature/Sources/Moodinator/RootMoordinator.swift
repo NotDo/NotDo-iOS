@@ -29,11 +29,9 @@ public final class RootMoordinator: Moordinator {
     }
 
     public func route(to path: RoutePath) -> MoordinatorContributors {
-        print("1112")
         guard let path = path.asNotDo else { print(path); return .none }
         switch path {
         case .splash:
-            print("111")
             let introMoodinator = introFactory.makeMoordinator()
             Moord.use(introMoodinator) { root in
                 self.window.rootViewController = root
@@ -48,7 +46,6 @@ public final class RootMoordinator: Moordinator {
             return .one(.contribute(withNextPresentable: introMoodinator, withNextRouter: DisposableRouter(singlePath: NotDoRoutePath.splash)))
 
         default:
-            print("asdf")
             return .none
         }
     }

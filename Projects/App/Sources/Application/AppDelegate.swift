@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SignInAssembly(),
             SignUpAssembly()
         ], container: AppDelegate.container)
-        print("111")
         return true
     }
 

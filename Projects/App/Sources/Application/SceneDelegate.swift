@@ -18,7 +18,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootMoordinator = AppDelegate.container.resolve(RootMoordinator.self, argument: window)!
         moordinatorWorker.coordinate(moordinator: rootMoordinator, with: rootRouter)
         self.window = window
-        print("111")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
